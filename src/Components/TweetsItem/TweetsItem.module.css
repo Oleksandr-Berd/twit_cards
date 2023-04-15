@@ -1,0 +1,68 @@
+.tweetsItemContainer {
+  background: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+  box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
+  color: #ebd8ff;
+  font-family:"Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 36px;
+  padding-bottom: 36px;
+  /* width: 315.5px; */
+  width: 380px;
+}
+
+.eclipse{
+    position: relative;
+   z-index: 1;
+}
+
+.line{
+    position: absolute;
+}
+
+.imgContainer{
+    position: absolute;
+    background: linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);
+border-radius: 50%;
+}
+
+.avatar{
+    margin-bottom: 26px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+}
+
+.tweets{
+    margin-bottom: 16px;
+}
+
+.followers{
+    margin-bottom: 26px;
+}
+
+.btnFollow {
+  background: #ebd8ff;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 10.3108px;
+  font-family:"Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.22;
+  text-transform: uppercase;
+  padding: 14px 56px;
+}

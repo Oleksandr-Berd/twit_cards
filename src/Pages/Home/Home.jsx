@@ -1,7 +1,14 @@
+import { NavLink, useLocation } from "react-router-dom";
+
 const Home = () => {
-    return ( 
-        <div>Home page</div>
-     );
+    const location = useLocation()
+    return (
+      <div>
+        <NavLink to="/tweets" state={{ from: location }} location={location}>
+          Tweets
+        </NavLink>
+      </div>
+    );
 }
  
 export default Home;
