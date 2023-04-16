@@ -1,22 +1,32 @@
 import { useState } from "react";
-import TweetsItem from "../TweetsItem/TweetsItem"
+import TweetsItem from "../TweetsItem/TweetsItem";
 import useFetch from "../../Utilities/useFetch";
 import { baseUrl } from "../../Utilities/url.js";
 import { Dna } from "react-loader-spinner";
 
-import css from './TweetsList.module.css'
+import css from "./TweetsList.module.css";
 
 const TweetsList = () => {
-   const [page, setPage] = useState(1);
-    const [perPage] = useState(8);
+  const [page, setPage] = useState(1);
+  const [perPage] = useState(9);
+
+  const { users, isLoading, error } = useFetch(baseUrl, {
+    page,
+    perPage,
+  });
     
-     const { users, isLoading, error } = useFetch(baseUrl, {
-       page,
-       perPage,
-     });
+     const shouldLoadingButton =
+       users.length > 0 && users.length >= perPage && !isLoading;
     
-    return (
+    const handleLoadMore = (evt) => {
+       setPage((prevPage) => prevPage + 1);
+  }
+
+
+  return (
+    <>
       <ul className={css.tweetsList}>
+        {error && <div>{error}</div>}
         {isLoading && (
           <Dna
             visible={true}
@@ -27,17 +37,25 @@ const TweetsList = () => {
             wrapperClass="dna-wrapper"
           />
         )}
-        {users.map(({ id, user, tweets, followers, avatar }) => (
+        {users.map(({ id, user, tweets, followers, avatar, isFollowing }) => (
           <TweetsItem
             key={id}
+            id={id}
             user={user}
             tweets={tweets}
             followers={followers}
             avatar={avatar}
+            isFollowing={isFollowing}
           />
         ))}
       </ul>
-    );
-}
- 
+      {shouldLoadingButton && (
+        <button className={css.btnLoadMore} onClick={handleLoadMore}>
+          Load more
+        </button>
+      )}
+    </>
+  );
+};
+
 export default TweetsList;
