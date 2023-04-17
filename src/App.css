@@ -3,6 +3,12 @@
 }
 
 @font-face {
+  font-family: "Shantell";
+  src: local("Shantell"),
+    url(./Utilities/fonts/Shantell/ShantellSans-.ttf) format("truetype");
+}
+
+@font-face {
   font-family: 'Montserrat';
   src: local('Montserrat'),
     url(./Utilities/fonts/Montserrat/Montserrat-VariableFont_wght.ttf) format("truetype");

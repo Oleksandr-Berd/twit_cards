@@ -6,14 +6,14 @@ import { Dna } from "react-loader-spinner";
 
 import css from "./TweetsList.module.css";
 
-const TweetsList = () => {
+const TweetsList = ({filter}) => {
   const [page, setPage] = useState(1);
   const [perPage] = useState(9);
 
   const { users, isLoading, error } = useFetch(baseUrl, {
     page,
     perPage,
-  });
+  }, filter);
     
      const shouldLoadingButton =
        users.length > 0 && users.length >= perPage && !isLoading;

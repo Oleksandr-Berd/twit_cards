@@ -23,3 +23,24 @@
   background-color: #fff;
   color: #000;
 }
+
+.form{
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form > *{
+  margin-bottom: 8px;
+}
+
+
+.datalist{
+  font-size: 16px;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    padding:8px 16px;
+    border-radius: 8px;
+}

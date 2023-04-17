@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function useFetch(url, { page, perPage }) {
+function useFetch(url, { page, perPage }, filter) {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,8 +14,18 @@ function useFetch(url, { page, perPage }) {
           `${url}?page=${page}&limit=${perPage}`
            
         );
-          const responseData = await response.data;
-        setUsers(responseData);
+        const responseData = await response.data;
+        switch (filter) {
+          case "Follow":
+            setUsers(responseData.filter(el => el.isFollowing === false))
+            console.log(users);
+            break
+          case "Following":
+             setUsers(responseData.filter(el => el.isFollowing === true))
+            break
+          default:
+            setUsers(responseData)
+        }
       } catch (error) {
         setError(error);
       } finally {
@@ -23,7 +33,7 @@ function useFetch(url, { page, perPage }) {
       }
     }
     fetchData();
-  }, [url, page, perPage]);
+  }, [url, page, perPage, filter]);
   return { users, isLoading, error };
 }
 export default useFetch;
