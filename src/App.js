@@ -1,9 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 import "./App.css";
-import Layout from "./Components/Layout/Layout";
-import Home from "./Pages/Home/Home";
-import Tweets from "./Pages/Tweets/Tweets";
-import Redirect from "./Pages/Redirect/Redirect";
+
+
+const Layout = lazy(() => import("./Components/Layout/Layout"));
+const Home = lazy(() => import("./Pages/Home/Home"));
+const Tweets = lazy(() => import("./Pages/Tweets/Tweets"));
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
           <Route path="home" element={<Home />}></Route>
           <Route path="tweets" element={<Tweets />}></Route>
         </Route>
-        <Route path="*" element={<Redirect />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

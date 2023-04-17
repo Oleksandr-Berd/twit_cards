@@ -27,6 +27,8 @@ const TweetsItem = ({ id, user, tweets, followers, avatar, isFollowing }) => {
 const initialState = { followers };
   const [state, dispatch] = useReducer(reducer, initialState);
   
+  
+
   const switchOnFollowing = () => {
     setStatus(!status);
     dispatch({ type: "increment" });
@@ -47,8 +49,7 @@ const initialState = { followers };
     );
   };
 
-
-
+const formattedFollowers = state.followers.toLocaleString();
 
 
 
@@ -61,17 +62,11 @@ const initialState = { followers };
         <img src={avatar} alt="avatar" className={css.avatar} />
       </div>
       <p className={css.tweets}>{tweets} tweets</p>
-      <p className={css.followers}>{state.followers} followers</p>
+      <p className={css.followers}>{formattedFollowers} followers</p>
       {status ? (
-        <Following
-          toggleFollowing={switchOnFollow}
-          
-        />
+        <Following toggleFollowing={switchOnFollow} />
       ) : (
-        <Follow
-          toggleFollowing={switchOnFollowing}
-         
-        />
+        <Follow toggleFollowing={switchOnFollowing} />
       )}
     </div>
   );
