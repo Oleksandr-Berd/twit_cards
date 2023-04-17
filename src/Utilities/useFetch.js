@@ -18,7 +18,6 @@ function useFetch(url, { page, perPage }, filter) {
         switch (filter) {
           case "Follow":
             setUsers(responseData.filter(el => el.isFollowing === false))
-            console.log(users);
             break
           case "Following":
              setUsers(responseData.filter(el => el.isFollowing === true))

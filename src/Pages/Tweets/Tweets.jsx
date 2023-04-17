@@ -17,23 +17,20 @@ const Tweets = () => {
           Go back
         </NavLink>
         <form action="" className={css.form}>
-        <label className={css.label} htmlFor="filter">
-          Choose your tweets
-        </label>
-        {/* <input
-            className={css.input}
-            list="filters"
-            name="filter"
-            id="filter"
+          <label className={css.label} htmlFor="filter">
+            Choose your tweets
+          </label>
+
+          <select
+            className={css.datalist}
+            id="filters"
             onChange={changeFilter}
-          /> */}
-        <select className={css.datalist} id="filters" onChange={changeFilter}>
-          <option value="Show all" selected>
-            Show all
-          </option>
-          <option value="Follow">Follow</option>
-          <option value="Following">Following</option>
-        </select>
+            defaultValue="Show all"
+          >
+            <option value="Show all">Show all</option>
+            <option value="Follow">Follow</option>
+            <option value="Following">Following</option>
+          </select>
         </form>
         <TweetsList filter={filter} />
       </div>
